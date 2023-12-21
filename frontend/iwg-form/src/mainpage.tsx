@@ -4,6 +4,8 @@ import './formcomponents.css';
 import imageSrc from './assets/tmc-logo.jpeg';
 import CheckWithText from './components/checkwithtext';
 import Spacer from './components/spacer';
+import TextfieldWithLabel from './components/textfieldlabeled';
+import SelectLabels from './components/selectmenu';
 
 const MainPage: React.FC = () => {
     return (
@@ -47,7 +49,39 @@ const MainPage: React.FC = () => {
                         <CheckWithText text="DPSS" />
                     </div>
                     <div className="child">
-                        <CheckWithText text="Third" />
+                        <CheckWithText text="ECRT" />
+                    </div>
+                </div>
+                <Spacer height={30} />
+                <div className="subheader">Enter your Information:</div>
+                <Spacer height={10} />
+                <CheckWithText text= "Keep my report anonymous"/>
+                <CheckWithText text= "I consent to give media my contact info"/>
+                <Spacer height={30} />
+                <div className='parent'>
+                    <div className="child">
+                        <TextfieldWithLabel labelText='Umich Email' />
+                    </div>
+                    <div className="child">
+                        <SelectLabels labelText='Affiliation'/>
+                    </div>
+                </div>
+                <Spacer height={10}/>
+                <div className='parent'>
+                    <div className="child">
+                        <TextfieldWithLabel labelText='First Name' />
+                    </div>
+                    <div className="child">
+                        <TextfieldWithLabel labelText='Last Name' />
+                    </div>
+                </div>
+                <Spacer height={10}/>
+                <div className='parent'>
+                    <div className="child">
+                        <TextfieldWithLabel labelText='Phone' />
+                    </div>
+                    <div className="child">
+                        <TextfieldWithLabel labelText='Zip' />
                     </div>
                 </div>
             </div>
