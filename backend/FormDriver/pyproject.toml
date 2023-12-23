@@ -1,0 +1,7 @@
+[project]
+name = "FormDriver"
+version = "1.0.0"
+dependencies = [
+    "selenium"
+]
+requires-python = ">=3.10"

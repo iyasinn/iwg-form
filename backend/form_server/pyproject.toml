@@ -1,0 +1,40 @@
+# [project]
+# name = "form_server"
+# version = "1.0.0"
+# authors = [{ name = "iyasinn", email = "iayasin771@gmail.com" }]
+# description = "A smalls selenium form package"
+# readme = "README.md"
+# requires-python = ">=3.10"
+
+# classifiers = [
+#   "Programming Language :: Python :: 3",
+#   "License :: OSI Approved :: MIT License",
+#   "Operating System :: OS Independent",
+# ]
+
+# [tool.setuptools]
+# packages = ["form_package"]
+
+# [tool.pylint."messages control"]
+# disable = ["cyclic-import"]
+
+# [project.urls]
+# Homepage = "https://github.com/pypa/sampleproject"
+# Issues = "https://github.com/pypa/sampleproject/issues"
+
+# [build-system]
+# requires = ["setuptools>=64.0.0", "wheel"]
+# build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "form_server"
+version = "1.0.0"
+dependencies = [
+    "Flask",
+    "selenium"
+]
+requires-python = ">=3.10"
+
+[tool.pylint."messages control"]
+disable = ["cyclic-import"]
