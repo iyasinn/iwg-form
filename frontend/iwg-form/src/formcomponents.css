@@ -1,37 +1,44 @@
 /* FormComponent.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 .form-heading {
-    color: #000; /* text-black equivalent */
-  font-size: 1.5rem; /* text-2xl equivalent */
-  font-weight: bold; /* font-bold equivalent */
-  font-family: 'Inter', sans-serif; /* font-['Inter'] equivalent */
-    margin: 10px 0;
-  }
+	color: #000; /* text-black equivalent */
+	font-size: 1.5rem; /* text-2xl equivalent */
+	font-weight: bold; /* font-bold equivalent */
+	font-family: "Inter", sans-serif; /* font-['Inter'] equivalent */
+	margin: 10px 0;
+}
 
 .asterisk {
-    color: #e3342f;
-    font-size: 0.75rem;
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
-}
-  
-.information {
-    color: #a0aec0;
-    font-size: 10px;
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
-}
-  
-.required {
-    color: #000;
-    font-size: 0.75rem;
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
+	color: #e3342f;
+	font-size: 0.75rem;
+	font-weight: 400;
+	font-family: "Inter", sans-serif;
 }
 
-.parent {
+.information {
+	color: #a0aec0;
+	font-size: 10px;
+	font-weight: 400;
+	font-family: "Inter", sans-serif;
+}
+
+.required {
+	color: #000;
+	font-size: 0.75rem;
+	font-weight: 400;
+	font-family: "Inter", sans-serif;
+}
+
+.row {
     display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+/* max-space inherits row */
+/* usage: row max-space */
+.max-space {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
@@ -43,28 +50,84 @@
     white-space: nowrap;
 }
 
+
 .subheader {
-    color: #000; 
-    font-size: 1.25rem; 
-    font-weight: bold; 
-    font-family: 'Inter', sans-serif; 
-  }
-
-  .check-with-text {
-    display: flex;
-    align-items: center; 
-    gap: 8px; 
+	color: #000;
+	font-size: 1.25rem;
+	font-weight: bold;
+	font-family: "Inter", sans-serif;
 }
 
-.check-with-text input[type="checkbox"] {
-   
+
+.label-style {
+	color: #6b747f;
+	font-size: 15px;
+	font-weight: normal;
+	font-family: "Inter", sans-serif;
+	text-decoration: underline;
 }
 
-.check-with-text label {
-    color: #a0aec0; 
-    font-size: 15px; 
-    font-weight: normal; 
-    font-family: 'Inter', sans-serif; 
-    text-decoration: underline; 
+#submit-button {
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: "Inter", sans-serif;
+	display: block;
+	margin: 0 auto;
+	width: 110.66px;
+	height: 34.34px;
+	background-color: #48bb78;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+	border: none;
+	cursor: pointer;
 }
-  
+
+#send-symbol {
+	width: 17.81px;
+	height: 17.81px;
+	position: relative;
+}
+
+.bottom-margin {
+	margin-bottom: 1rem;
+}
+
+
+
+.fullwidth {
+	width: 100%;
+}
+
+
+.image-button-style {
+	width: 139.92px;
+	height: 24.17px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #d1d5db;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px; 
+	padding: 4px;
+	box-sizing: border-box;
+}
+
+.icon-style {
+	width: 19.08px;
+	height: 19.08px;
+}
+
+.text-style {
+	color: black;
+	font-size: 10.88px;
+	font-family: "Inter", sans-serif;
+	font-weight: normal;
+}
+
+#checkbox-style {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
