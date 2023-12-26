@@ -29,7 +29,7 @@ const FormElement: React.FC<FormElement> = ({
 					id="outlined-basic"
 					variant="outlined"
 					size="small"
-					className="fullwidth"
+					className="input-style"
 				/>
 			);
 		} else if (formType === "select") {
@@ -37,7 +37,7 @@ const FormElement: React.FC<FormElement> = ({
 				<FormControl
 					sx={{ m: 0, minWidth: 0 }}
 					size="small"
-					className="fullwidth"
+					className="input-style"
 				>
 					<Select
 						value={selection}
@@ -61,9 +61,8 @@ const FormElement: React.FC<FormElement> = ({
 			return <p>hello</p>;
 		} else if (formType === "multiline-text") {
 			return (
-
 				<TextField
-					className="fullwidth"
+					className="input-style"
 					multiline
 					rows={4}
 					name={labelText}
@@ -84,13 +83,6 @@ const FormElement: React.FC<FormElement> = ({
 						// onChange={handleFileChange}
 						style={{ display: "none" }}
 						name={labelText}
-
-				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DateTimeField
-						defaultValue={dayjs("2022-04-17T15:30")}
-						size="small"
-						className="fullwidth"
-
 					/>
 				</label>
 			);

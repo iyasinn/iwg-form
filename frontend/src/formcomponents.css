@@ -30,26 +30,21 @@
 	font-family: "Inter", sans-serif;
 }
 
+.parent {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around; /* Adjusts spacing between children */
+	width: 100%;
+	/* background-color: red; */
+	margin-bottom: 1rem;
+	min-width: 300px;
+}
+
 .row {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1rem;
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 5px;
 }
-
-/* max-space inherits row */
-/* usage: row max-space */
-.max-space {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-}
-
-.child {
-    flex-shrink: 1;
-    white-space: nowrap;
-}
-
 
 .subheader {
 	color: #000;
@@ -57,7 +52,6 @@
 	font-weight: bold;
 	font-family: "Inter", sans-serif;
 }
-
 
 .label-style {
 	color: #6b747f;
@@ -94,29 +88,24 @@
 }
 
 
-
-.fullwidth {
-	width: 100%;
-}
-
-
 .image-button-style {
 	width: 139.92px;
 	height: 24.17px;
 	background-color: white;
 	border-radius: 5px;
-	border: 1px solid #d1d5db;
+	border: 1px solid #d1d5db; /* Tailwind CSS neutral-500 */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 8px; 
-	padding: 4px;
+	gap: 8px; /* Adjust the gap between icon and text as needed */
+	padding: 4px; /* Adjust for padding inside the button */
 	box-sizing: border-box;
 }
 
 .icon-style {
 	width: 19.08px;
 	height: 19.08px;
+	/* If your icon is SVG, additional styling can be applied as needed */
 }
 
 .text-style {
