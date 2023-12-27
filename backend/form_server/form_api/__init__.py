@@ -1,6 +1,7 @@
 import dataclasses
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from form_api.form_data import DRIVER_MAP, KEY_MAP
+import json
 
 app = Flask(__name__)
 
@@ -28,3 +29,22 @@ def upload_form():
             return "Driver submission failed.", 400
 
     return "Successful submission!", 200
+
+@app.route("/get_fields", methods=["POST"])
+def get_fields(): 
+
+    forms = request.json.get("forms", None)
+    
+    if forms is None: 
+        return "Error, no forms propery found", 400
+    
+    union = set()
+
+    for form in forms: 
+        if form not in KEY_MAP: 
+            return f"Error, form {form} does not exist", 400
+        
+        keys = KEY_MAP[form]
+        union = union.union(keys)
+
+    return jsonify(list(union)), 200

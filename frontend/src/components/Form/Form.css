@@ -1,6 +1,18 @@
 /* FormComponent.css */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
+.form-container {
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  flex-direction: column;
+  overflow-y: auto; 
+  min-width: 200px;
+  padding: 30px;
+}
+
 .form-heading {
 	color: #000; /* text-black equivalent */
 	font-size: 1.5rem; /* text-2xl equivalent */

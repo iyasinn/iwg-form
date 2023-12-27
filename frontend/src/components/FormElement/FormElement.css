@@ -7,7 +7,6 @@
 	font-size: 15px;
 	font-weight: normal;
 	font-family: "Inter", sans-serif;
-	text-decoration: underline;
 }
 
 .form-item span {
@@ -29,11 +28,6 @@
 	background-color: rgb(137, 137, 220);
 }
 
-.title-text{
-    margin-bottom: 3px;
-    display: block;
-}
-
 /* Checkbox style */
 .check-with-text {
 	display: flex;
@@ -50,5 +44,13 @@
 	font-size: 15px;
 	font-weight: normal;
 	font-family: "Inter", sans-serif;
+	text-decoration: underline;
+}
+
+
+.title-text{
+	margin: 0px;
+    margin-bottom: 3px;
+    display: inline-block;
 	text-decoration: underline;
 }

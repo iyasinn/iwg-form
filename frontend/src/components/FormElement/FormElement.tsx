@@ -1,9 +1,24 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+// import Tooltip from "@mui/material/Tooltip"
+import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
 import "./FormElement.css";
+
+const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+	<Tooltip {...props} classes={{ popper: className }} />
+))(({ }) => ({
+	[`& .${tooltipClasses.tooltip}`]: {
+		backgroundColor: "#f5f5f9",
+		color: "rgba(0, 0, 0, 0.87)",
+		maxWidth: 220,
+		fontSize: "14px",
+	},
+}));
+
 
 interface FormElement {
 	labelText: string;
@@ -99,7 +114,22 @@ const FormElement: React.FC<FormElement> = ({
 
 	return (
 		<div className="form-item">
-			{formType !== "checkbox" && <span className="title-text">{labelText}</span>}
+			{formType !== "checkbox" && (
+				<HtmlTooltip placement="right"
+					title={
+						<React.Fragment>
+							{/* <Typography color="inherit">
+								Tooltip with HTML
+							</Typography> */}
+							{/* <em>{"And here's"}</em> <b>{"some"}</b>{" "} */}
+							{/* <u>{"amazing content"}</u>.{" "} */}
+							{"We won't share your name or any identifying information."}
+						</React.Fragment>
+					}
+				>
+					<p className="title-text">{labelText}</p>
+				</HtmlTooltip>
+			)}
 			{getType()}
 		</div>
 	);

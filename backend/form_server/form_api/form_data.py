@@ -39,7 +39,6 @@ CAIR_KEYS = {
     "authorize_media_yes",
     "authorize_media_no",
 }
-
 DPSS_FORM_URL = (
     "https://dpss.umich.edu/content/services/report-a-crime/submit-online-form/"
 )
