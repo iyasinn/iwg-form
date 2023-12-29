@@ -2,15 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 .form-container {
-  display: block;
-  margin: 0 auto;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 600px;
-  flex-direction: column;
-  overflow-y: auto; 
-  min-width: 200px;
-  padding: 30px;
+	display: block;
+	margin: 0 auto;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 600px;
+	flex-direction: column;
+	overflow-y: auto;
+	min-width: 200px;
+	padding: 30px;
 }
 
 .form-heading {
@@ -63,7 +63,9 @@
 	font-size: 1.25rem;
 	font-weight: bold;
 	font-family: "Inter", sans-serif;
+	/* margin-top: 25px; */
 }
+
 
 .label-style {
 	color: #6b747f;
@@ -99,7 +101,6 @@
 	margin-bottom: 1rem;
 }
 
-
 .image-button-style {
 	width: 139.92px;
 	height: 24.17px;
@@ -131,4 +132,13 @@
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
+}
+
+#checkbox-style label{
+	color: #6b747f;
+	font-size: 15px;
+	font-weight: normal;
+	font-family: "Inter", sans-serif;
+	text-decoration: underline;
+	margin-left: 3px;
 }

@@ -11,7 +11,7 @@ CAIR_FORM_ELEMENTS = {
     "incident_date": FormItem(By.ID, "lite_mode_20", TEXT),
     "first_name": FormItem(By.NAME, "q3_yourFull[first]", TEXT),
     "last_name": FormItem(By.NAME, "q3_yourFull[last]", TEXT),
-    "your_email": FormItem(By.NAME, "q6_yourEmail", TEXT),
+    "email": FormItem(By.NAME, "q6_yourEmail", TEXT),
     "religion": FormItem(By.NAME, "q17_religion", TEXT),
     "race_ethnic_background": FormItem(By.NAME, "q11_raceethnicity", TEXT),
     "phone": FormItem(By.NAME, "q7_yourPhone[full]", TEXT),
@@ -38,7 +38,7 @@ DPSS_FORM_ELEMENTS = {
     "zip": FormItem(By.ID, "report-crime7", TEXT),
     "email": FormItem(By.ID, "report-crime8", TEXT),
     "phone": FormItem(By.ID, "report-crime9", TEXT),
-    "details": FormItem(By.ID, "report-crime10", TEXT),
+    "incident_details": FormItem(By.ID, "report-crime10", TEXT),
 }
 # DPSS_KEYS = DPSS_FORM_ELEMENTS.keys()
 

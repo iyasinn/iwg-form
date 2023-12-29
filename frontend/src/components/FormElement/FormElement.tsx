@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -24,7 +24,7 @@ interface FormElement {
 	formType: string;
 	data?: string[];
 	defaultValue?: string;
-	formRefKey: string;
+	formRefInputName: string;
 }
 
 const FormElement: React.FC<FormElement> = ({
@@ -32,6 +32,7 @@ const FormElement: React.FC<FormElement> = ({
 	formType,
 	data = [],
 	defaultValue = "",
+	formRefInputName,
 }) => {
 	const [selection, setSelection] = React.useState(defaultValue);
 
@@ -43,7 +44,7 @@ const FormElement: React.FC<FormElement> = ({
 		if (formType === "text") {
 			return (
 				<TextField
-					name={labelText}
+					name={formRefInputName}
 					id="outlined-basic"
 					variant="outlined"
 					size="small"
@@ -63,7 +64,7 @@ const FormElement: React.FC<FormElement> = ({
 						onChange={handleChange}
 						displayEmpty
 						inputProps={{ "aria-label": "Without label" }}
-						name={labelText}
+						name={formRefInputName}
 						required={true}
 					>
 						{defaultValue ? (
@@ -88,7 +89,7 @@ const FormElement: React.FC<FormElement> = ({
 					className="input-style"
 					multiline
 					rows={4}
-					name={labelText}
+					name={formRefInputName}
 					required={true}
 				/>
 			);
@@ -106,7 +107,7 @@ const FormElement: React.FC<FormElement> = ({
 						accept="image/*"
 						// onChange={handleFileChange}
 						style={{ display: "none" }}
-						name={labelText}
+						name={formRefInputName}
 					/>
 				</label>
 			);
@@ -115,11 +116,13 @@ const FormElement: React.FC<FormElement> = ({
 				<div className="check-with-text">
 					<input
 						type="checkbox"
-						id="checkbox-id"
+						id={labelText}
 						defaultChecked={true}
 						name={labelText}
+						// onChange={handleCheckboxChange}
+						// value={checkboxValue}
 					/>
-					<label htmlFor="checkbox-id">{labelText}</label>
+					<label htmlFor={labelText}>{labelText}</label>
 				</div>
 			);
 		}
