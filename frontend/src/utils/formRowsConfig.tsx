@@ -91,7 +91,7 @@ export const InformationFormConfig: FormElement[][] = [
 	],
 	// Fourth row - Street, City, and State
 	[
-		{ labelText: "Street", formType: "text", formRefInputName: "street" },
+		{ labelText: "Address", formType: "text", formRefInputName: "address" },
 		{ labelText: "City", formType: "text", formRefInputName: "city" },
 		{
 			labelText: "State",

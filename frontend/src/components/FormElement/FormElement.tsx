@@ -65,7 +65,7 @@ const FormElement: React.FC<FormElement> = ({
 						displayEmpty
 						inputProps={{ "aria-label": "Without label" }}
 						name={formRefInputName}
-						required={true}
+						// required={true}
 					>
 						{defaultValue ? (
 							<MenuItem value="Michigan">Michigan</MenuItem>
@@ -90,7 +90,7 @@ const FormElement: React.FC<FormElement> = ({
 					multiline
 					rows={4}
 					name={formRefInputName}
-					required={true}
+					// required={true}
 				/>
 			);
 		} else if (formType === "image") {
