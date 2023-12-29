@@ -10,7 +10,7 @@ import "./FormElement.css";
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 	<Tooltip {...props} classes={{ popper: className }} />
-))(({ }) => ({
+))(({}) => ({
 	[`& .${tooltipClasses.tooltip}`]: {
 		backgroundColor: "#f5f5f9",
 		color: "rgba(0, 0, 0, 0.87)",
@@ -19,19 +19,22 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 	},
 }));
 
-
 interface FormElement {
 	labelText: string;
 	formType: string;
 	data?: string[];
+	defaultValue?: string;
+	formRefKey: string;
 }
 
 const FormElement: React.FC<FormElement> = ({
 	labelText,
 	formType,
 	data = [],
+	defaultValue = "",
 }) => {
-	const [selection, setSelection] = React.useState("");
+	const [selection, setSelection] = React.useState(defaultValue);
+
 	const handleChange = (event: SelectChangeEvent) => {
 		setSelection(event.target.value);
 	};
@@ -45,6 +48,7 @@ const FormElement: React.FC<FormElement> = ({
 					variant="outlined"
 					size="small"
 					className="input-style"
+					// required={true}
 				/>
 			);
 		} else if (formType === "select") {
@@ -60,10 +64,14 @@ const FormElement: React.FC<FormElement> = ({
 						displayEmpty
 						inputProps={{ "aria-label": "Without label" }}
 						name={labelText}
+						required={true}
 					>
-						<MenuItem value="">
-							<em>None</em>
-						</MenuItem>
+						{defaultValue ? (
+							<MenuItem value="Michigan">Michigan</MenuItem>
+						) : (
+							<MenuItem value="">None</MenuItem>
+						)}
+
 						{data.map((option) => (
 							<MenuItem key={option} value={option}>
 								{option}
@@ -81,6 +89,7 @@ const FormElement: React.FC<FormElement> = ({
 					multiline
 					rows={4}
 					name={labelText}
+					required={true}
 				/>
 			);
 		} else if (formType === "image") {
@@ -101,10 +110,15 @@ const FormElement: React.FC<FormElement> = ({
 					/>
 				</label>
 			);
-		} else if (formType === "checkbox"){
+		} else if (formType === "checkbox") {
 			return (
 				<div className="check-with-text">
-					<input type="checkbox" id="checkbox-id" defaultChecked={true} name={labelText}/>
+					<input
+						type="checkbox"
+						id="checkbox-id"
+						defaultChecked={true}
+						name={labelText}
+					/>
 					<label htmlFor="checkbox-id">{labelText}</label>
 				</div>
 			);
@@ -115,7 +129,8 @@ const FormElement: React.FC<FormElement> = ({
 	return (
 		<div className="form-item">
 			{formType !== "checkbox" && (
-				<HtmlTooltip placement="right"
+				<HtmlTooltip
+					placement="right"
 					title={
 						<React.Fragment>
 							{/* <Typography color="inherit">
@@ -123,7 +138,9 @@ const FormElement: React.FC<FormElement> = ({
 							</Typography> */}
 							{/* <em>{"And here's"}</em> <b>{"some"}</b>{" "} */}
 							{/* <u>{"amazing content"}</u>.{" "} */}
-							{"We won't share your name or any identifying information."}
+							{
+								"We won't share your name or any identifying information."
+							}
 						</React.Fragment>
 					}
 				>

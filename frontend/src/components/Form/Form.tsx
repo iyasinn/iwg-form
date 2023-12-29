@@ -1,14 +1,28 @@
 import React, { useRef } from "react";
 import FormElement from "../FormElement/FormElement";
-import Spacer from "../Spacer/Spacer"
-import "./Form.css"
+import Spacer from "../Spacer/Spacer";
+import "./Form.css";
 
 interface Form {
-	handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+	// handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const Form: React.FC<Form> = ({ handleSubmit }) => {
+const Form: React.FC<Form> = ({}) => {
 	const formRef = useRef<HTMLFormElement>(null);
+
+	const handleSubmit = (event: React.FormEvent) => {
+		event.preventDefault();
+		if (formRef.current) {
+			const formData = new FormData(formRef.current);
+			// const data = {};
+			const data: { [key: string]: FormDataEntryValue } = {};
+			formData.forEach((value, key) => {
+				data[key] = value;
+			});
+			console.log(data); // Here you have your form data
+			// Now you can handle the submission (e.g., send data to a server)
+		}
+	};
 
 	return (
 		<form ref={formRef} className="form-container" onSubmit={handleSubmit}>
@@ -68,6 +82,7 @@ const Form: React.FC<Form> = ({ handleSubmit }) => {
 					labelText="State"
 					formType="select"
 					data={usStates}
+					defaultValue="Michigan"
 				/>
 			</div>
 
@@ -138,7 +153,7 @@ const usStates = [
 	"Maine",
 	"Maryland",
 	"Massachusetts",
-	"Michigan",
+	// "Michigan",
 	"Minnesota",
 	"Mississippi",
 	"Missouri",

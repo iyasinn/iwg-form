@@ -23,30 +23,16 @@ CAIR_FORM_ELEMENTS = {
     "authorize_media_yes": FormItem(By.ID, "input_23_0", RADIO),
     "authorize_media_no": FormItem(By.ID, "input_23_1", RADIO),
 }
-CAIR_KEYS = {
-    "incident_date",
-    "first_name",
-    "last_name",
-    "your_email",
-    "religion",
-    "race_ethnic_background",
-    "phone",
-    "government_agency",
-    "company_name",
-    "city",
-    "state",
-    "incident_details",
-    "authorize_media_yes",
-    "authorize_media_no",
-}
+# CAIR_KEYS = CAIR_FORM_ELEMENTS.keys()
+
 DPSS_FORM_URL = (
     "https://dpss.umich.edu/content/services/report-a-crime/submit-online-form/"
 )
 DPSS_FORM_ELEMENTS = {
     "first_name": FormItem(By.ID, "report-crime1", TEXT),
     "last_name": FormItem(By.ID, "report-crime2", TEXT),
-    "address1": FormItem(By.ID, "report-crime3", TEXT),
-    "address2": FormItem(By.ID, "report-crime4", TEXT),
+    "address": FormItem(By.ID, "report-crime3", TEXT),
+    # "address2": FormItem(By.ID, "report-crime4", TEXT),
     "city": FormItem(By.ID, "report-crime5", TEXT),
     "state": FormItem(By.ID, "report-crime6", TEXT),
     "zip": FormItem(By.ID, "report-crime7", TEXT),
@@ -54,19 +40,7 @@ DPSS_FORM_ELEMENTS = {
     "phone": FormItem(By.ID, "report-crime9", TEXT),
     "details": FormItem(By.ID, "report-crime10", TEXT),
 }
-DPSS_KEYS = {
-    "first_name",
-    "last_name",
-    "address1",
-    "address2",
-    "city",
-    "state",
-    "zip",
-    "email",
-    "phone",
-    "details",
-}
-
+# DPSS_KEYS = DPSS_FORM_ELEMENTS.keys()
 
 # * Most important driver map
 DRIVER_MAP = {
@@ -74,4 +48,4 @@ DRIVER_MAP = {
     "dpss": FormDriver(DPSS_FORM_URL, DPSS_FORM_ELEMENTS),
 }
 
-KEY_MAP = {"cair": CAIR_KEYS, "dpss": DPSS_KEYS}
+# KEY_MAP = {"cair": CAIR_KEYS, "dpss": DPSS_KEYS}

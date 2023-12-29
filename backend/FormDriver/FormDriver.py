@@ -79,37 +79,41 @@ class FormDriver:
         elif form_item.element_type == FormItem.EltType.RADIO and val == "on":
             element.click()
 
-    def data_valid(self, form_data):
-        if set(form_data.keys()) == set(self.form_items.keys()):
-            return True
+    def get_keys(self):
+        return self.form_items.keys()
 
-        diff = set(self.form_items.keys()) - set(form_data.keys())
-        if len(diff) > 0: 
-            print("ERROR: Missing the following keys")
-            print(diff)
-        # else: 
-        #     print("ERROR: form_data contains keys that aren't required")
-        #     print(set(form_data.keys()) - set(self.form_items.keys()))
+    def data_valid(self, form_data):
+        """Determine if our data is valid at all."""
+        if set(self.form_items.keys()).issubset(set(form_data.keys())):
+            return True
         
         return False
 
+    def get_missing_keys(self, form_data):
+        """Return the missing keys in form_data."""
+        return list(set(self.form_items.keys()) - set(form_data.keys()))
+
     # * The formDriver requires that form_data contains the keys for form_items. Nothing more, nothing less. If it contains extra keys, that's okay
     def submit_to_form(self, form_data):
+        if not self.data_valid(form_data):
+            return {
+                "status": "error",
+                "message": "Invalid key data.",
+                "missing_keys": self.get_missing_keys(form_data)
+            }
 
-        if not self.data_valid(form_data): 
-            return False 
-        
-        try: 
+        try:
             with create_driver(self.page_url, self.iframe_locator) as driver:
                 for key, form_item in self.form_items.items():
                     value = form_data[key]
                     self.input_to_form(driver, form_item, value)
-
-                print("completed")
-                time.sleep(10)
-        except Exception as err: 
+                print("Completed")
+                time.sleep(2)
+                return {"status": "success", "message": "Form submitted successfully."}
+        except Exception as err:
             print("ERROR: Selenium driver failed")
-            print(err)
-            return False
-        
-        return True
+            return {
+                "status": "error",
+                "message": "Selenium driver failed.",
+                "error": str(err),
+            }

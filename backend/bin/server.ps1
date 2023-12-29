@@ -13,7 +13,7 @@ function Start-Server {
         exit 1
     }
 
-    Start-Process flask -ArgumentList "--app form_api run --host 0.0.0.0 --port 9000" -NoNewWindow
+    Start-Process flask -ArgumentList "--app form_api run --host 0.0.0.0 --port 9000 --debug" -NoNewWindow
 }
 
 function Stop-Server {

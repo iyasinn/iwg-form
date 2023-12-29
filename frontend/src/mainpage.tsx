@@ -5,23 +5,11 @@ import LOGO_PATH from "./assets/tmc-logo.jpeg";
 import Form from "./components/Form/Form"
 
 const MainPage: React.FC = () => {
-    const formRef = useRef<HTMLFormElement>(null);
-	const [complete, onComplete] = useState(false);
+    // const formRef = useRef<HTMLFormElement>(null);
+	// const [complete, onComplete] = useState(false);
 	//const [value, onChange] = useState<Value>(new Date());
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		if (formRef.current) {
-			const formData = new FormData(formRef.current);
-			// const data = {};
-            const data: { [key: string]: FormDataEntryValue } = {};
-			formData.forEach((value, key) => {
-				data[key] = value;
-			});
-			console.log(data); // Here you have your form data
-			// Now you can handle the submission (e.g., send data to a server)
-		}
-	};
+
 
 	return (
 		<main id="mainpage">
@@ -40,7 +28,7 @@ const MainPage: React.FC = () => {
 				/>
 			</div>
 			
-			<Form handleSubmit={handleSubmit} />
+			<Form />
 
 		</main>
 	);
