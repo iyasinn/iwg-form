@@ -42,10 +42,20 @@ DPSS_FORM_ELEMENTS = {
 }
 # DPSS_KEYS = DPSS_FORM_ELEMENTS.keys()
 
+
+ECRT_FORM_URL = "https://ecrt.umich.edu/file-a-report/reporting-form/"
+ECRT_FORM_ELEMENTS = {
+    "first_name": FormItem(By.ID, "field_5xlwa", TEXT),
+    "email": FormItem(By.ID, "field_m8jbx", TEXT),
+    "phone": FormItem(By.ID, "field_g91ui", TEXT),
+}
+
 # * Most important driver map
+# * We should dynamically generate certain fields
 DRIVER_MAP = {
     "cair": FormDriver(CAIR_FORM_URL, CAIR_FORM_ELEMENTS, CAIR_IFRAME_LOCATER),
     "dpss": FormDriver(DPSS_FORM_URL, DPSS_FORM_ELEMENTS),
+    "ecrt": FormDriver(ECRT_FORM_URL, ECRT_FORM_ELEMENTS)
 }
 
 # KEY_MAP = {"cair": CAIR_KEYS, "dpss": DPSS_KEYS}

@@ -1,9 +1,11 @@
 import dataclasses
 from flask import Flask, request, jsonify
 from form_api.form_data import DRIVER_MAP
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 print(__name__)
 
@@ -16,8 +18,8 @@ def index():
 @app.route("/submit_form", methods=["POST"])
 def upload_form():
     forms = request.json.get("forms", None)
-    if forms is None:
-        return {"error": "No forms property found"}, 400
+    if forms is None or len(forms) == 0:
+        return {"error": "No forms data found"}, 400
 
     data = request.json.get("data", {})
 
@@ -51,7 +53,7 @@ def upload_form():
 def get_fields():
     """Returns keys for forms. If form doesn't exist, causes errors."""
     """If no forms provided, returns fields for all forms."""
-    
+
     forms = request.json.get("forms", DRIVER_MAP.keys())
 
     current_keys = set()
