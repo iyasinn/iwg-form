@@ -45,7 +45,9 @@ def upload_form():
         response["results"][form] = driver_response
         response_code = 400 if driver_response["status"] == "error" else response_code
 
-    print(response)
+    print(json.dumps(response, indent=2))
+    # print(response)
+
     return response, response_code
 
 

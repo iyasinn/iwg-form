@@ -4,6 +4,7 @@ import axios from "axios";
 import {
 	InformationFormConfig,
 	IncidentFormConfig,
+	checkboxDataConfig,
 } from "../../utils/formRowsConfig";
 import Spacer from "../Spacer/Spacer";
 import "./Form.css";
@@ -14,34 +15,25 @@ const Form: React.FC<Form> = ({}) => {
 	const formRef = useRef<HTMLFormElement>(null);
 	const [forms, setForms] = useState<{ [key: string]: boolean }>({});
 	const [fields, setFields] = useState([]);
+	const [checkboxData, setCheckboxData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchForms = async () => {
 			setIsLoading(true);
 			try {
-				// Replace with your API endpoint
 				const response = await axios.get(
 					"http://127.0.0.1:9000/get_forms"
 				);
 
-				// Check if the response status is OK (200)
-				if (response.status !== 200) {
-					throw new Error("Network response was not ok");
-				}
-
-				// Access the data property of the response
 				const data = response.data;
-
-				// Handle the data (e.g., console.log or set a state)
-				// console.log(data);
-
 				const newForm: { [key: string]: boolean } = {};
 
 				for (const form of data["forms"]) {
 					newForm[form] = true;
 				}
 				setForms(newForm);
+
 			} catch (error) {
 				// Handle any errors that occurred during the fetch
 				console.error("ERROR", error);
@@ -50,9 +42,13 @@ const Form: React.FC<Form> = ({}) => {
 			}
 		};
 		fetchForms();
-		// updateFields(Object.keys(forms));
+	
+		// Now we need to iterate through and udpdate checkBoxData
+
 	}, []); // Empty dependency array ensures this runs once on mount
 
+	// * When we update forms, then the fields need to change! The fields show what inputs display
+	// * Forms show which forms display. 
 	useEffect(() => {
 		const updateFields = async (formsNeeded: string[]) => {
 			const postData = { forms: formsNeeded };
@@ -111,8 +107,10 @@ const Form: React.FC<Form> = ({}) => {
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
 		const submit_data = formatSubmitData();
-
+		console.log(fields);
 		console.log("Submit data", submit_data);
+
+		return 5;
 
 		try {
 			// Replace with your API endpoint
@@ -168,6 +166,31 @@ const Form: React.FC<Form> = ({}) => {
 			<Spacer height={20} />
 
 			<div className="subheader">Enter your Information:</div>
+
+			<div className="row">
+				{/* <input
+					name="bob"
+					id="test"
+					type="checkbox"
+					onChange={() => console.log("bob")}
+				/>
+				<label htmlFor="test">FDS</label> */}
+				{checkboxDataConfig.map((element: any) => {
+					console.log(element);
+
+					return (
+						<>
+							<input
+								type="checkbox"
+								id={element.labelText}
+							></input>
+							<label htmlFor={element.labelText}>{element.labelText}</label>
+						</>
+					);
+
+					return <p>{element.labelText}</p>;
+				})}
+			</div>
 
 			<Spacer height={15} />
 

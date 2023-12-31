@@ -89,12 +89,15 @@
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 	border: none;
 	cursor: pointer;
+	text-align: center;
 }
 
 #send-symbol {
-	width: 17.81px;
-	height: 17.81px;
-	position: relative;
+	/* margin-top: 5px; */
+	/* width: 17.81px;
+	height: 17.81px; */
+	/* position: relative; */
+	/* display: block; */
 }
 
 .bottom-margin {

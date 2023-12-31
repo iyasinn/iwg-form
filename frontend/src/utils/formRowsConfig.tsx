@@ -147,3 +147,15 @@ export const IncidentFormConfig: FormElement[][] = [
 		},
 	],
 ];
+
+export const checkboxDataConfig : any[] = [
+	{
+		labelText: "Keep my report anonymous",
+		checked: true,
+		initialize_data: {
+			authorize_media_yes: true,
+			authorize_media_no: false
+		}
+	}
+	
+]
