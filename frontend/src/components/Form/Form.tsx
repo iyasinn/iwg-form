@@ -8,14 +8,16 @@ import {
 } from "../../utils/formRowsConfig";
 import Spacer from "../Spacer/Spacer";
 import "./Form.css";
-
+import ToolTip from "../ToolTip/ToolTip";
 interface Form {}
 
 const Form: React.FC<Form> = ({}) => {
 	const formRef = useRef<HTMLFormElement>(null);
 	const [forms, setForms] = useState<{ [key: string]: boolean }>({});
-	const [fields, setFields] = useState([]);
-	const [checkboxData, setCheckboxData] = useState({});
+	const [fields, setFields] = useState<string[]>([]);
+	const [checkboxData, setCheckboxData] = useState<{
+		[key: string]: boolean;
+	}>({});
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
@@ -33,7 +35,6 @@ const Form: React.FC<Form> = ({}) => {
 					newForm[form] = true;
 				}
 				setForms(newForm);
-
 			} catch (error) {
 				// Handle any errors that occurred during the fetch
 				console.error("ERROR", error);
@@ -42,13 +43,19 @@ const Form: React.FC<Form> = ({}) => {
 			}
 		};
 		fetchForms();
-	
-		// Now we need to iterate through and udpdate checkBoxData
 
+		// const data = checkboxDataConfig.map((item) => item.initialize_data);
+		// const checkboxInitialData = Object.assign({}, ...data);
+		const checkboxInitialData = Object.assign(
+			{},
+			...checkboxDataConfig.map((item) => item.initialize_data)
+		);
+		setCheckboxData(checkboxInitialData);
+		// Now we need to iterate through and udpdate checkBoxData
 	}, []); // Empty dependency array ensures this runs once on mount
 
 	// * When we update forms, then the fields need to change! The fields show what inputs display
-	// * Forms show which forms display. 
+	// * Forms show which forms display.
 	useEffect(() => {
 		const updateFields = async (formsNeeded: string[]) => {
 			const postData = { forms: formsNeeded };
@@ -86,7 +93,9 @@ const Form: React.FC<Form> = ({}) => {
 	// * Handle submit
 	const formatSubmitData = () => {
 		const data: {
-			data: { [key: string]: FormDataEntryValue | string | boolean };
+			data: {
+				[key: string]: FormDataEntryValue | string | boolean | any;
+			};
 			forms: string[];
 		} = {
 			data: {},
@@ -100,17 +109,20 @@ const Form: React.FC<Form> = ({}) => {
 				data["data"][key] = value;
 			});
 		}
+
+		Object.entries(checkboxData).forEach(([key, value]) => {
+			data["data"][key] = value;
+		});
+
 		data["forms"] = Object.keys(forms).filter((key) => forms[key] == true);
 		return data;
 	};
 
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
+		setIsLoading(true);
 		const submit_data = formatSubmitData();
-		console.log(fields);
 		console.log("Submit data", submit_data);
-
-		return 5;
 
 		try {
 			// Replace with your API endpoint
@@ -124,8 +136,16 @@ const Form: React.FC<Form> = ({}) => {
 		} catch (error: any) {
 			console.log("Submit form error:", error.response.data);
 			// console.error("ERROR", error);
+		} finally {
+			setIsLoading(false);
 		}
 	};
+
+	if (isLoading) {
+		return (
+			<img className="form-container" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952kqaz9oyscryqv4hzi7gj3yetccv96vuqesw5af73&ep=v1_gifs_search&rid=200w.gif&ct=g" />
+		);
+	}
 
 	return (
 		<form ref={formRef} className="form-container" onSubmit={handleSubmit}>
@@ -168,33 +188,44 @@ const Form: React.FC<Form> = ({}) => {
 			<div className="subheader">Enter your Information:</div>
 
 			<div className="row">
-				{/* <input
-					name="bob"
-					id="test"
-					type="checkbox"
-					onChange={() => console.log("bob")}
-				/>
-				<label htmlFor="test">FDS</label> */}
 				{checkboxDataConfig.map((element: any) => {
-					console.log(element);
+					if (
+						!Object.keys(element.initialize_data).every((key) =>
+							fields.includes(key)
+						)
+					) {
+						return null;
+					}
 
 					return (
-						<>
+						<div id="checkbox-style" key={element.labelText}>
 							<input
 								type="checkbox"
 								id={element.labelText}
+								onChange={() => {
+									Object.keys(element.initialize_data).map(
+										(key) => {
+											setCheckboxData((prev) => {
+												return {
+													...prev,
+													[key]: !prev[key],
+												};
+											});
+										}
+									);
+								}}
 							></input>
-							<label htmlFor={element.labelText}>{element.labelText}</label>
-						</>
+							<ToolTip toolTipText={element.toolTipText}>
+								<label htmlFor={element.labelText}>
+									{element.labelText}
+								</label>
+							</ToolTip>
+						</div>
 					);
-
-					return <p>{element.labelText}</p>;
 				})}
 			</div>
 
 			<Spacer height={15} />
-
-			{/* Information section */}
 
 			{loadSection(InformationFormConfig, fields)}
 

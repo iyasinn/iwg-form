@@ -76,7 +76,7 @@ class FormDriver:
 
         if form_item.element_type == FormItem.EltType.TEXT:
             element.send_keys(val)
-        elif form_item.element_type == FormItem.EltType.RADIO and val == "on":
+        elif form_item.element_type == FormItem.EltType.RADIO and (val == True or val == "on"):
             element.click()
 
     def get_keys(self):
@@ -107,8 +107,6 @@ class FormDriver:
                 for key, form_item in self.form_items.items():
                     value = form_data[key]
                     self.input_to_form(driver, form_item, value)
-                print("Completed")
-                time.sleep(2)
                 return {"status": "success", "message": "Form submitted successfully."}
         except Exception as err:
             print("ERROR: Selenium driver failed")

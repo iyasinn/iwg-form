@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -49,7 +49,7 @@ const FormElement: React.FC<FormElement> = ({
 					variant="outlined"
 					size="small"
 					className="input-style"
-					// required={true}
+					required={true}
 				/>
 			);
 		} else if (formType === "select") {
@@ -65,7 +65,7 @@ const FormElement: React.FC<FormElement> = ({
 						displayEmpty
 						inputProps={{ "aria-label": "Without label" }}
 						name={formRefInputName}
-						// required={true}
+						required={true}
 					>
 						{defaultValue ? (
 							<MenuItem value="Michigan">Michigan</MenuItem>
@@ -90,7 +90,7 @@ const FormElement: React.FC<FormElement> = ({
 					multiline
 					rows={4}
 					name={formRefInputName}
-					// required={true}
+					required={true}
 				/>
 			);
 		} else if (formType === "image") {
@@ -111,21 +111,22 @@ const FormElement: React.FC<FormElement> = ({
 					/>
 				</label>
 			);
-		} else if (formType === "checkbox") {
-			return (
-				<div className="check-with-text">
-					<input
-						type="checkbox"
-						id={labelText}
-						defaultChecked={true}
-						name={labelText}
-						// onChange={handleCheckboxChange}
-						// value={checkboxValue}
-					/>
-					<label htmlFor={labelText}>{labelText}</label>
-				</div>
-			);
-		}
+		} 
+		// else if (formType === "checkbox") {
+		// 	return (
+		// 		<div className="check-with-text">
+		// 			<input
+		// 				type="checkbox"
+		// 				id={labelText}
+		// 				defaultChecked={true}
+		// 				name={labelText}
+		// 				// onChange={handleCheckboxChange}
+		// 				// value={checkboxValue}
+		// 			/>
+		// 			<label htmlFor={labelText}>{labelText}</label>
+		// 		</div>
+		// 	);
+		// }
 		return <p>{formType} is not a valid type you dog</p>;
 	};
 
