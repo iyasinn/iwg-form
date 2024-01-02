@@ -25,7 +25,7 @@ const Form: React.FC<Form> = ({}) => {
 			setIsLoading(true);
 			try {
 				const response = await axios.get(
-					"http://127.0.0.1:9000/get_forms"
+					"https://iwg-form-backend.vercel.app/get_forms"
 				);
 
 				const data = response.data;
@@ -63,7 +63,7 @@ const Form: React.FC<Form> = ({}) => {
 			try {
 				// Replace with your API endpoint
 				const response = await axios.post(
-					"http://127.0.0.1:9000/get_fields",
+					"https://iwg-form-backend.vercel.app/get_fields",
 					postData
 				);
 
@@ -127,7 +127,7 @@ const Form: React.FC<Form> = ({}) => {
 		try {
 			// Replace with your API endpoint
 			const response = await axios.post(
-				"http://127.0.0.1:9000/submit_form",
+				"https://iwg-form-backend.vercel.app/submit_form",
 				submit_data
 			);
 			// Parse the response as JSON

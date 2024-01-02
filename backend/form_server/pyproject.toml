@@ -38,3 +38,19 @@ requires-python = ">=3.10"
 
 [tool.pylint."messages control"]
 disable = ["cyclic-import"]
+
+[tool.poetry]
+name = "form-api"
+version = "0.1.0"
+description = ""
+authors = ["iyasin <iayasin771@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Flask = "^3.0.0"
+Flask-Cors = "^4.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
