@@ -25,7 +25,13 @@ const Form: React.FC<Form> = ({}) => {
 			setIsLoading(true);
 			try {
 				const response = await axios.get(
-					"http://127.0.0.1:9000/get_forms"
+					"http://127.0.0.1:9000/get_forms",
+					{
+						headers: {
+							"Content-Type": "application/json",
+							// Additional headers if needed
+						},
+					}
 				);
 
 				const data = response.data;
@@ -64,7 +70,13 @@ const Form: React.FC<Form> = ({}) => {
 				// Replace with your API endpoint
 				const response = await axios.post(
 					"http://127.0.0.1:9000/get_fields",
-					postData
+					postData,
+					{
+						headers: {
+							"Content-Type": "application/json",
+							// Additional headers if needed
+						},
+					}
 				);
 
 				// Check if the response status is OK (200)
@@ -128,7 +140,13 @@ const Form: React.FC<Form> = ({}) => {
 			// Replace with your API endpoint
 			const response = await axios.post(
 				"http://127.0.0.1:9000/submit_form",
-				submit_data
+				submit_data,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						// Additional headers if needed
+					},
+				}
 			);
 			// Parse the response as JSON
 			const data = response.data;

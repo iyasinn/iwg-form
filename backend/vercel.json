@@ -1,0 +1,14 @@
+{
+	"builds": [
+		{
+			"src": "form_server/form_api/__init__.py",
+            "use":"@vercel/python"
+		}
+	],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"form_server/form_api/__init__.py"
+        }
+    ]
+}
