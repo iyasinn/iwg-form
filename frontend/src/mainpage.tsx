@@ -14,6 +14,7 @@ const MainPage: React.FC = () => {
 	return (
 		<main id="mainpage">
 			<div className="parent">
+
 				<h1 className="form-heading">Report an Incident</h1>
 				<img
 					style={{

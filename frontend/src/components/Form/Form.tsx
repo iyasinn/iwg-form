@@ -25,7 +25,13 @@ const Form: React.FC<Form> = ({}) => {
 			setIsLoading(true);
 			try {
 				const response = await axios.get(
-					"http://127.0.0.1:9000/get_forms"
+					"https://iwg-form-backend.vercel.app/get_forms",
+					{
+						headers: {
+							"Content-Type": "application/json",
+							// Additional headers if needed
+						},
+					}
 				);
 
 				const data = response.data;
@@ -63,8 +69,14 @@ const Form: React.FC<Form> = ({}) => {
 			try {
 				// Replace with your API endpoint
 				const response = await axios.post(
-					"http://127.0.0.1:9000/get_fields",
-					postData
+					"https://iwg-form-backend.vercel.app/get_fields",
+					postData,
+					{
+						headers: {
+							"Content-Type": "application/json",
+							// Additional headers if needed
+						},
+					}
 				);
 
 				// Check if the response status is OK (200)
@@ -127,8 +139,14 @@ const Form: React.FC<Form> = ({}) => {
 		try {
 			// Replace with your API endpoint
 			const response = await axios.post(
-				"http://127.0.0.1:9000/submit_form",
-				submit_data
+				"https://iwg-form-backend.vercel.app/submit_form",
+				submit_data,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						// Additional headers if needed
+					},
+				}
 			);
 			// Parse the response as JSON
 			const data = response.data;
