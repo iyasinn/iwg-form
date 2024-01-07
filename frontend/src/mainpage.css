@@ -12,3 +12,27 @@
     max-width: 33.33%;
   }
 } */
+
+.info-card{
+  display: block;
+	margin: 0 auto;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 600px;
+	flex-direction: column;
+	overflow-y: auto;
+	min-width: 200px;
+	padding: 30px;
+  background-color: pink;
+  height: 100%;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  background-color: pink;
+  height: 50px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
