@@ -11,6 +11,9 @@ import "./Form.css";
 import ToolTip from "../ToolTip/ToolTip";
 interface Form {}
 
+// const URL : string = "https://iwg-form-frontend.vercel.app"
+const URL : string = "http://localhost:5173"
+
 const Form: React.FC<Form> = ({}) => {
 	const formRef = useRef<HTMLFormElement>(null);
 	const [forms, setForms] = useState<{ [key: string]: boolean }>({});
@@ -25,7 +28,7 @@ const Form: React.FC<Form> = ({}) => {
 			setIsLoading(true);
 			try {
 				const response = await axios.get(
-					"http://127.0.0.1:9000/get_forms",
+					`${URL}/get_forms`,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -69,7 +72,7 @@ const Form: React.FC<Form> = ({}) => {
 			try {
 				// Replace with your API endpoint
 				const response = await axios.post(
-					"http://127.0.0.1:9000/get_fields",
+					`${URL}/get_fields`,
 					postData,
 					{
 						headers: {
@@ -139,7 +142,7 @@ const Form: React.FC<Form> = ({}) => {
 		try {
 			// Replace with your API endpoint
 			const response = await axios.post(
-				"http://127.0.0.1:9000/submit_form",
+				`${URL}/submit_form`,
 				submit_data,
 				{
 					headers: {
