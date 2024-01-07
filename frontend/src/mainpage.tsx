@@ -108,13 +108,34 @@ const MainPage: React.FC = () => {
               />
             </button>
           </div>
-          <p>
-            About Save time by submitting one form instead of 6+. “Report an
-            Incident” is designed to accelerate and simplify how you report
-            islamaphobia on campus. By filling out this one form, your report is
-            sent to multiple official reporting channels, including University
-            of Michigan departments (e.g. ECRT) and CAIR.
+          <p className="required bottom-margin" style={{ padding: 10 }}>
+            Save time by submitting one form instead of 6+. “Report an Incident”
+            is designed to accelerate and simplify how you report islamaphobia
+            on campus. By filling out this one form, your report is sent to
+            multiple official reporting channels, including University of
+            Michigan departments (e.g. ECRT) and CAIR.
           </p>
+          <h1 className="form-heading" style={{ padding: 10 }}>
+            Where Your Data is Shared
+          </h1>
+          <p className="required" style={{ paddingRight: 10, paddingLeft: 10 }}>
+            We only ask for data that is required by the different reporting
+            channels you send to. Here is the data each reporting channel asks
+            for:
+          </p>
+          <h1 className="form-heading" style={{ padding: 10 }}>
+            Privacy Statement
+          </h1>
+          <p
+            className="required margin-bottom"
+            style={{ paddingRight: 10, paddingLeft: 10, paddingBottom: 30 }}
+          >
+            Muslim Coalition only retains non-identifiable data from your
+            submission (e.g. where your report is sent to, Religion).
+          </p>
+          <div className="row required" style={{ paddingLeft: 10 }}>
+            <small>By Muslim Coalition ™</small>
+          </div>
         </Dialog>
       ) : (
         <Form />
