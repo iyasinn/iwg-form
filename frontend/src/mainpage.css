@@ -26,3 +26,13 @@
   background-color: pink;
   height: 100%;
 }
+
+.box {
+  display: flex;
+  flex-direction: row;
+  background-color: pink;
+  height: 50px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}

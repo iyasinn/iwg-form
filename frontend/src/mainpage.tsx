@@ -7,6 +7,8 @@ import Form from "./components/Form/Form";
 import Dialog from "@mui/material/Dialog";
 import { TransitionProps } from "@mui/material/transitions";
 import { Slide } from "@mui/material";
+import CLOSEICON_PATH from "./assets/ic_round-close.svg";
+import { Padding } from "@mui/icons-material";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -81,7 +83,39 @@ const MainPage: React.FC = () => {
               // Add more custom styles if needed
             },
           }}
-        ></Dialog>
+        >
+          <div className="box">
+            <h1 className="form-heading" style={{ padding: 10 }}>
+              About
+            </h1>
+            <button
+              onClick={handleInfoRequestedToggle}
+              style={{
+                border: "none",
+                background: "none",
+                padding: "0",
+                cursor: "pointer",
+              }}
+            >
+              <img
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  flexShrink: 0,
+                }}
+                src={CLOSEICON_PATH}
+                alt="Description"
+              />
+            </button>
+          </div>
+          <p>
+            About Save time by submitting one form instead of 6+. “Report an
+            Incident” is designed to accelerate and simplify how you report
+            islamaphobia on campus. By filling out this one form, your report is
+            sent to multiple official reporting channels, including University
+            of Michigan departments (e.g. ECRT) and CAIR.
+          </p>
+        </Dialog>
       ) : (
         <Form />
       )}
