@@ -11,7 +11,7 @@ import "./Form.css";
 import ToolTip from "../ToolTip/ToolTip";
 interface Form {}
 
-const URL : string = "https://iwg-form-frontend.vercel.app"
+const URL : string = "https://iwg-form-backend.vercel.app"
 // const URL: string = "http://127.0.0.1:5000";
 
 const Form: React.FC<Form> = ({}) => {
