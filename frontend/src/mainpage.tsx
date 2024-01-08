@@ -8,7 +8,6 @@ import Dialog from "@mui/material/Dialog";
 import { TransitionProps } from "@mui/material/transitions";
 import { Slide } from "@mui/material";
 import CLOSEICON_PATH from "./assets/ic_round-close.svg";
-import { Padding } from "@mui/icons-material";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -19,7 +18,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const MainPage: React.FC = () => {
+export default function MainPage() {
   // const formRef = useRef<HTMLFormElement>(null);
   // const [complete, onComplete] = useState(false);
   //const [value, onChange] = useState<Value>(new Date());
@@ -142,6 +141,4 @@ const MainPage: React.FC = () => {
       )}
     </main>
   );
-};
-
-export default MainPage;
+}
