@@ -3,21 +3,8 @@ import { TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-// import Tooltip from "@mui/material/Tooltip"
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
+import ToolTipp from "../ToolTip/ToolTip";
 import "./FormElement.css";
-
-const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({}) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "#f5f5f9",
-    color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 220,
-    fontSize: "14px",
-  },
-}));
 
 export default function FormElement({
   labelText,
@@ -103,49 +90,22 @@ export default function FormElement({
           <input
             type="file"
             accept="image/*"
-            // onChange={handleFileChange}
             style={{ display: "none" }}
             name={formRefInputName}
           />
         </label>
       );
     }
-    // else if (formType === "checkbox") {
-    // 	return (
-    // 		<div className="check-with-text">
-    // 			<input
-    // 				type="checkbox"
-    // 				id={labelText}
-    // 				defaultChecked={true}
-    // 				name={labelText}
-    // 				// onChange={handleCheckboxChange}
-    // 				// value={checkboxValue}
-    // 			/>
-    // 			<label htmlFor={labelText}>{labelText}</label>
-    // 		</div>
-    // 	);
-    // }
-    return <p>{formType} is not a valid type you dog</p>;
+    return <p>{formType} is not a valid type</p>;
   };
 
   return (
     <div className="form-item">
       {formType !== "checkbox" && (
-        <HtmlTooltip
-          placement="right"
-          title={
-            <React.Fragment>
-              {/* <Typography color="inherit">
-								Tooltip with HTML
-							</Typography> */}
-              {/* <em>{"And here's"}</em> <b>{"some"}</b>{" "} */}
-              {/* <u>{"amazing content"}</u>.{" "} */}
-              {"We won't share your name or any identifying information."}
-            </React.Fragment>
-          }
-        >
-          <p className="title-text">{labelText}</p>
-        </HtmlTooltip>
+        <ToolTipp
+          toolTipText="We won't share your name or any identifying information."
+          children={<p className="title-text">{labelText}</p>}
+        ></ToolTipp>
       )}
       {getType()}
     </div>
