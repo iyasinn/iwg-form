@@ -9,6 +9,15 @@
 	font-family: "Inter", sans-serif;
 }
 
+.datetime{
+	border-radius: 5px;
+	border: solid #a7a9ac 1px;
+	padding: 3px;
+	width: 98%;
+	display: block;
+	/* flex-grow: 1; */
+}
+
 .form-item span {
 	display: block;
 }

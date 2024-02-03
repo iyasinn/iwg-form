@@ -7,6 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import "./FormElement.css";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimeField } from "@mui/x-date-pickers/DateTimeField";
+import dayjs from "dayjs";
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 	<Tooltip {...props} classes={{ popper: className }} />
@@ -82,7 +86,22 @@ const FormElement: React.FC<FormElement> = ({
 				</FormControl>
 			);
 		} else if (formType === "time") {
-			return <p>hello</p>;
+			return (
+				<input
+					className="datetime"
+					type="date"
+					name={formRefInputName}
+				/>
+			);
+			// return (
+			// 	// <LocalizationProvider dateAdapter={AdapterDayjs}>
+			// 	// 	<DateTimeField
+			// 	// 		defaultValue={dayjs("2022-04-17T15:30")}
+			// 	// 		size="small"
+			// 	// 		className="fullwidth"
+			// 	// 	/>
+			// 	// </LocalizationProvider>
+			// )
 		} else if (formType === "multiline-text") {
 			return (
 				<TextField
@@ -111,7 +130,7 @@ const FormElement: React.FC<FormElement> = ({
 					/>
 				</label>
 			);
-		} 
+		}
 		// else if (formType === "checkbox") {
 		// 	return (
 		// 		<div className="check-with-text">

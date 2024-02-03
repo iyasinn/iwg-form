@@ -128,7 +128,7 @@ export const IncidentFormConfig: FormElement[][] = [
 		{
 			labelText: "Incident Date/Time",
 			formType: "time",
-			formRefInputName: "incident_time",
+			formRefInputName: "incident_date",
 		},
 	],
 	// Second row - First Name and Last Name
