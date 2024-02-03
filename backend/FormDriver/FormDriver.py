@@ -62,10 +62,11 @@ class FormItem:
 
 
 class FormDriver:
-    def __init__(self, page_url, form_items, iframe_locator=None):
+    def __init__(self, page_url, form_items, submit_button, iframe_locator=None):
         self.page_url = page_url
         self.form_items = form_items
         self.iframe_locator = iframe_locator
+        self.button_locator = submit_button
 
     def get_element(self, driver, form_item):
         selector_type, selector_value = form_item.get_selectors()
@@ -76,7 +77,9 @@ class FormDriver:
 
         if form_item.element_type == FormItem.EltType.TEXT:
             element.send_keys(val)
-        elif form_item.element_type == FormItem.EltType.RADIO and (val == True or val == "on"):
+        elif form_item.element_type == FormItem.EltType.RADIO and (
+            val == True or val == "on"
+        ):
             element.click()
 
     def get_keys(self):
@@ -86,12 +89,17 @@ class FormDriver:
         """Determine if our data is valid at all."""
         if set(self.form_items.keys()).issubset(set(form_data.keys())):
             return True
-        
+
         return False
 
     def get_missing_keys(self, form_data):
         """Return the missing keys in form_data."""
         return list(set(self.form_items.keys()) - set(form_data.keys()))
+
+    def submit(self, driver):
+        print("submitting")
+        button = self.get_element(driver, self.button_locator)
+        button.click()
 
     # * The formDriver requires that form_data contains the keys for form_items. Nothing more, nothing less. If it contains extra keys, that's okay
     def submit_to_form(self, form_data):
@@ -99,7 +107,7 @@ class FormDriver:
             return {
                 "status": "error",
                 "message": "Invalid key data.",
-                "missing_keys": self.get_missing_keys(form_data)
+                "missing_keys": self.get_missing_keys(form_data),
             }
 
         try:
@@ -107,6 +115,8 @@ class FormDriver:
                 for key, form_item in self.form_items.items():
                     value = form_data[key]
                     self.input_to_form(driver, form_item, value)
+                self.submit(driver)
+                time.sleep(5)
                 return {"status": "success", "message": "Form submitted successfully."}
         except Exception as err:
             print("ERROR: Selenium driver failed")

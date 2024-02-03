@@ -8,7 +8,7 @@ CAIR_IFRAME_LOCATER = (
     'iframe[title="CAIR National Civil Rights Intake"]',
 )
 CAIR_FORM_ELEMENTS = {
-    # "incident_date": FormItem(By.ID, "lite_mode_20", TEXT),
+    "incident_date": FormItem(By.ID, "lite_mode_20", TEXT),
     "first_name": FormItem(By.NAME, "q3_yourFull[first]", TEXT),
     "last_name": FormItem(By.NAME, "q3_yourFull[last]", TEXT),
     "email": FormItem(By.NAME, "q6_yourEmail", TEXT),
@@ -24,6 +24,7 @@ CAIR_FORM_ELEMENTS = {
     "authorize_media_no": FormItem(By.ID, "input_23_1", RADIO),
 }
 # CAIR_KEYS = CAIR_FORM_ELEMENTS.keys()
+CAIR_BUTTON = FormItem(By.ID, "input_2", RADIO)
 
 DPSS_FORM_URL = (
     "https://dpss.umich.edu/content/services/report-a-crime/submit-online-form/"
@@ -40,6 +41,7 @@ DPSS_FORM_ELEMENTS = {
     "phone": FormItem(By.ID, "report-crime9", TEXT),
     "incident_details": FormItem(By.ID, "report-crime10", TEXT),
 }
+DPSS_BUTTON = FormItem(By.ID, "submit", RADIO)
 # DPSS_KEYS = DPSS_FORM_ELEMENTS.keys()
 
 
@@ -50,16 +52,17 @@ ECRT_FORM_ELEMENTS = {
     "phone": FormItem(By.ID, "field_g91ui", TEXT),
 }
 
+
 # * Most important driver map
 # * We should dynamically generate certain fields
 DRIVER_MAP = {
-    "cair": FormDriver(CAIR_FORM_URL, CAIR_FORM_ELEMENTS, CAIR_IFRAME_LOCATER),
-    "dpss": FormDriver(DPSS_FORM_URL, DPSS_FORM_ELEMENTS),
-    "ecrt": FormDriver(ECRT_FORM_URL, ECRT_FORM_ELEMENTS)
+    "cair": FormDriver(CAIR_FORM_URL, CAIR_FORM_ELEMENTS, CAIR_BUTTON, CAIR_IFRAME_LOCATER),
+    "dpss": FormDriver(DPSS_FORM_URL, DPSS_FORM_ELEMENTS, DPSS_BUTTON, None),
+    "ecrt": FormDriver(ECRT_FORM_URL, ECRT_FORM_ELEMENTS, None, None),
 }
 # NAME_MAP = {
 #     "cair": "Council on American-Islamic Relations",
-#     "dpss": "Division of Public Safety & Security", 
+#     "dpss": "Division of Public Safety & Security",
 #     "ecrt": "Equity, Civil Rights, and Title IX Office"
 # }
 
@@ -69,7 +72,7 @@ DRIVER_MAP = {
 #     return {
 #         "authorize_media_yes": curr_value
 #         "authorize_media_no": !curr_value
-#     } 
+#     }
 
 # BOOL_SELECT_MAP = {
 #     "cair": {

@@ -41,6 +41,12 @@ def upload_form():
     # if response_code == 400:
     #     return response, response_code
 
+    if "incident_date" in data: 
+        date = data["incident_date"].split("-")
+        date = date[1] + date[2] + date[0]
+        print(date)
+        data["incident_date"] = date 
+
     for form in forms:
         driver = DRIVER_MAP[form]
         driver_response = driver.submit_to_form(data)
